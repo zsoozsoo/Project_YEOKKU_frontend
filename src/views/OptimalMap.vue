@@ -2,10 +2,10 @@
 	<div id="detail">
 		<Map name="map"></Map>
 		<div>
-			<router-link to="/spotdetail"></router-link>
-			<router-link to="/pathdetail"></router-link>
-			<router-link to="/optlist"></router-link>
-			<router-link to="/route"></router-link>
+			<router-link to="/map"></router-link>
+			<router-link to="/map/pathdetail"></router-link>
+			<router-link to="/map/optlist"></router-link>
+			<router-link to="/map/route"></router-link>
 			<router-view></router-view>
 		</div>
 	</div>

@@ -34,17 +34,17 @@ const routes = [
 				component: () => import('../components/optimalmap/TourSpotDetail.vue'),
 			},
 			{
-				path: '/pathdetail',
+				path: 'pathdetail',
 				name: 'PathDetail',
 				component: () => import('../components/optimalmap/PathDetail.vue'),
 			},
 			{
-				path: '/optlist',
+				path: 'optlist',
 				name: 'OptimalList',
 				component: () => import('../components/optimalmap/OptimalList.vue'),
 			},
 			{
-				path: '/route',
+				path: 'route',
 				name: 'RouteList',
 				component: () => import('../components/optimalmap/RouteList.vue'),
 			},

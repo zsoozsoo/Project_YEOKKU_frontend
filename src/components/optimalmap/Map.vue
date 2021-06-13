@@ -1,57 +1,57 @@
 <template>
-  <div>
-    <div id="selectArea">
-      <select
-        name="continent"
-        id="continent"
-        ref="continent"
-        @change="selectContinent($event)"
-      >
-        <option>선택</option>
-        <option v-for="option in continentOptions" :key="option.continentName">
-          {{ option.continentName }}
-        </option>
-      </select>
-      <select
-        name="country"
-        id="country"
-        ref="country"
-        @change="selectCountry($event)"
-      >
-        <option
-          v-for="option in countryOptions"
-          :key="option.countryCode"
-          :continentvalue="option"
-        >
-          {{ option.countryName }}
-        </option>
-      </select>
-      <select
-        name="city"
-        id="city"
-        ref="city"
-        v-model="selected"
-        @change="selectCity()"
-      >
-        <option value="0">선택</option>
+	<div>
+		<div id="selectArea">
+			<select
+				name="continent"
+				id="continent"
+				ref="continent"
+				@change="selectContinent($event)"
+			>
+				<option>선택</option>
+				<option v-for="option in continentOptions" :key="option.continentName">
+					{{ option.continentName }}
+				</option>
+			</select>
+			<select
+				name="country"
+				id="country"
+				ref="country"
+				@change="selectCountry($event)"
+			>
+				<option
+					v-for="option in countryOptions"
+					:key="option.countryCode"
+					:continentvalue="option"
+				>
+					{{ option.countryName }}
+				</option>
+			</select>
+			<select
+				name="city"
+				id="city"
+				ref="city"
+				v-model="selected"
+				@change="selectCity()"
+			>
+				<option value="0">선택</option>
 
-        <option
-          v-for="option in cityOptions"
-          :key="option.cityName"
-          :value="{
-            centerlat: option.centerLat,
-            centerlng: option.centerLng,
-            cityName: option.cityName,
-          }"
-          :continentvalue="option.cityName"
-        >
-          {{ option.cityName }}
-        </option>
-      </select>
-    </div>
+				<option
+					v-for="option in cityOptions"
+					:key="option.cityName"
+					:value="{
+						centerlat: option.centerLat,
+						centerlng: option.centerLng,
+						cityName: option.cityName,
+					}"
+					:continentvalue="option.cityName"
+				>
+					{{ option.cityName }}
+				</option>
+			</select>
+		</div>
 
-    <div id="map"></div>
-  </div>
+		<div id="map"></div>
+	</div>
 </template>
 
 <script>
@@ -129,7 +129,7 @@ export default {
 		checkalreadyVisit(country) {
 			this.CHANGE_TOUR_LIST(country);
 			if (this.GET_ISDUPLICATECITY == true) {
-				this.$router.push('/route');
+				this.$router.push('/map/route');
 			}
 		},
 		selectContinent(event) {
@@ -148,15 +148,15 @@ export default {
 		selectCountry(event) {
 			//데이터 변경될 때,
 			let country = event.target.value;
-			if(this.beforeCoutry.length == 0){
+			if (this.beforeCoutry.length == 0) {
 				this.beforeCoutry = country;
-			}else{
+			} else {
 				console.log(this.beforeCoutry);
-				console.log("이전값 기록")
+				console.log('이전값 기록');
 				let data = {
-					beforeCnt : this.beforeCoutry,
-					curCnt : country,
-				}
+					beforeCnt: this.beforeCoutry,
+					curCnt: country,
+				};
 				this.checkalreadyVisit(data);
 			}
 			this.beforeCoutry = country;
@@ -207,7 +207,7 @@ export default {
 
 <style>
 #map {
-  width: 50vw;
-  height: 50vh;
+	width: 50vw;
+	height: 50vh;
 }
 </style>

@@ -1,18 +1,18 @@
 <template>
-  <div>
-    <div>
-      <span
-        ><p>
-          {{ SPECIFIC_SPOT_DETAIL.pointName }}
-        </p>
-        <p>{{ SPECIFIC_SPOT_DETAIL.cityName }}</p>
-      </span>
-      <p>{{ SPECIFIC_SPOT_DETAIL.desc }}</p>
-    </div>
-    <div>
-      <button v-on:click="mvRouteList">경로추가</button>
-    </div>
-  </div>
+	<div>
+		<div>
+			<span
+				><p>
+					{{ SPECIFIC_SPOT_DETAIL.pointName }}
+				</p>
+				<p>{{ SPECIFIC_SPOT_DETAIL.cityName }}</p>
+			</span>
+			<p>{{ SPECIFIC_SPOT_DETAIL.desc }}</p>
+		</div>
+		<div>
+			<button v-on:click="mvRouteList">경로추가</button>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -38,9 +38,9 @@ export default {
 			};
 			this.SET_ADD_SPOT_IN_ROUTE(data);
 			if (this.GET_ISAVAILABLE_SPOT === true) {
-				this.$router.push('/route');
+				this.$router.push('/map/route');
 			} else {
-				alert("이미 저장된 관광지이거나 관광지 10개 이상을 추가하였습니다!");
+				alert('이미 저장된 관광지이거나 관광지 10개 이상을 추가하였습니다!');
 			}
 			// console.log('isREturn' + ret);
 			// if (ret == false) {

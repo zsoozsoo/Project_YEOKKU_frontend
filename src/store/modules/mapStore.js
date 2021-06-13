@@ -2,6 +2,7 @@ const mapStore = {
 	namespaced: true,
 	state: {
 		specificSpot: Object,
+		//Map을 쓰고 싶었는데 vue2에서는 사용 불가.. 3부터 가능하다고 함
 		routeList: [],
 		specificRoute: [],
 		isAvailableStoreinRouteList: true,
@@ -17,7 +18,7 @@ const mapStore = {
 			if (state.isAvailableStoreinRouteList == false) return false;
 			else return true;
 		},
-		GET_CURRENT_SPECIFIC_ROUTE(state) {
+		GET_CURRENT_ROUTE(state) {
 			return state.specificRoute;
 		},
 		GET_ISDUPLICATECITY(state) {
@@ -54,7 +55,7 @@ const mapStore = {
 		},
 		CHANGE_TOUR_LIST(state, payload) {
 			console.log(payload);
-
+			//이전 도시에 경로들 routeList 우선 추가
 			if (state.specificRoute.length > 0) {
 				let data = {
 					country: payload.beforeCnt,
@@ -84,6 +85,9 @@ const mapStore = {
 			}
 
 			//중복된 값이 없을 경우, 이전 값은 저장하고 specificRoute를 초기화시킨다.
+		},
+		DELETE_A_TOUR(state, idx) {
+			state.specificRoute.splice(idx, 1);
 		},
 	},
 };
