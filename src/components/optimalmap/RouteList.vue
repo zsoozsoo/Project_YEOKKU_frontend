@@ -31,13 +31,14 @@
 <script>
 import { mapGetters } from 'vuex';
 import lodash from 'lodash';
+import http from '@/util/http-common.js';
 
 // import http from '@/util/http-common.js';
 export default {
 	name: 'RouteList',
 	data() {
 		return {
-			ckMode: '대중교통',
+			ckMode: '자동차',
 			ckWay: '',
 		};
 	},
@@ -55,14 +56,17 @@ export default {
 			console.log(temp);
 			console.log('배열 복사 체크2');
 			console.log(this.GET_CURRENT_SPECIFIC_ROUTE);
-			// let data = {
-			// 	start: first,
-			// 	end: first,
-			// 	pointList: temp,
-			// };
 
-			// http.get('/optpath_round' + this.ckMode);
-			//get 요청에서 어떻게 data를 전송하지..? body를 해야할 것 같은데...?
+			//경로리스트
+
+			http.post('/optpath_round/' + 'driving', {
+				start: first,
+				end: first,
+				pointList: temp,
+			}).then((res) => {
+				console.log(res);
+			});
+			
 		},
 	},
 };
