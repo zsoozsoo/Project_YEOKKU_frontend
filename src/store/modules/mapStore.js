@@ -46,35 +46,44 @@ const mapStore = {
 				}
 			}
 			//조건에 다 만족하는 경우 데이터 추가
-			if (state.isAvailableStoreinRouteList == true)
+			if (state.isAvailableStoreinRouteList == true) {
 				state.specificRoute.push(data);
+				console.log('데이터 추가되는지 ㅎ ㅘㄱ인');
+				console.log(state.specificRoute);
+			}
 		},
 		CHANGE_TOUR_LIST(state, payload) {
 			console.log(payload);
+
+			if (state.specificRoute.length > 0) {
+				let data = {
+					country: payload.beforeCnt,
+					list: state.specificRoute,
+				};
+				state.routeList.push(data);
+				console.log(state.routeList);
+			}
+
 			state.isDuplicateCity = false;
-			for (const route of state.routeList) {
-				console.log(route.country);
-				if (route.country.trim() == payload.trim()) {
-					console.log('여기 들어오나요?');
-					state.isDuplicateCity = true;
-					state.specificRoute = [];
-					state.specificRoute.push(route.list);
+			if (state.routeList.length > 0) {
+				for (const index in state.routeList) {
+					//현재 선택한 값이 중복된 값이 있을 경우,
+					if (state.routeList[index].country == payload.curCnt) {
+						state.isDuplicateCity = true;
+						state.specificRoute = [];
+						state.specificRoute = state.routeList[index].list;
+						//이미 추가했던 값이 있다면 해당하는 값 지우기
+						//그래야 중복되지 않고 routeList에 저장가능
+						state.routeList.splice(index, 1);
+					}
 				}
 			}
+
 			if (state.isDuplicateCity == false) {
-				if (state.specificRoute.length > 0) {
-					let data = {
-						country: payload,
-						list: state.specificRoute,
-					};
-					state.routeList.push(data);
-					state.specificRoute = [];
-					console.log('여기 돌어옴//?');
-					console.log(state.routeList);
-					console.log('여기 돌어옴2//?');
-					console.log(state.specificRoute);
-				}
+				state.specificRoute = [];
 			}
+
+			//중복된 값이 없을 경우, 이전 값은 저장하고 specificRoute를 초기화시킨다.
 		},
 	},
 };

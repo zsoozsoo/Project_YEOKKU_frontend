@@ -1,57 +1,57 @@
 <template>
-	<div>
-		<div id="selectArea">
-			<select
-				name="continent"
-				id="continent"
-				ref="continent"
-				@change="selectContinent($event)"
-			>
-				<option>선택</option>
-				<option v-for="option in continentOptions" :key="option.continentName">
-					{{ option.continentName }}
-				</option>
-			</select>
-			<select
-				name="country"
-				id="country"
-				ref="country"
-				@change="selectCountry($event)"
-			>
-				<option
-					v-for="option in countryOptions"
-					:key="option.countryCode"
-					:continentvalue="option"
-				>
-					{{ option.countryName }}
-				</option>
-			</select>
-			<select
-				name="city"
-				id="city"
-				ref="city"
-				v-model="selected"
-				@change="selectCity()"
-			>
-				<option value="0">선택</option>
+  <div>
+    <div id="selectArea">
+      <select
+        name="continent"
+        id="continent"
+        ref="continent"
+        @change="selectContinent($event)"
+      >
+        <option>선택</option>
+        <option v-for="option in continentOptions" :key="option.continentName">
+          {{ option.continentName }}
+        </option>
+      </select>
+      <select
+        name="country"
+        id="country"
+        ref="country"
+        @change="selectCountry($event)"
+      >
+        <option
+          v-for="option in countryOptions"
+          :key="option.countryCode"
+          :continentvalue="option"
+        >
+          {{ option.countryName }}
+        </option>
+      </select>
+      <select
+        name="city"
+        id="city"
+        ref="city"
+        v-model="selected"
+        @change="selectCity()"
+      >
+        <option value="0">선택</option>
 
-				<option
-					v-for="option in cityOptions"
-					:key="option.cityName"
-					:value="{
-						centerlat: option.centerLat,
-						centerlng: option.centerLng,
-						cityName: option.cityName,
-					}"
-					:continentvalue="option.cityName"
-				>
-					{{ option.cityName }}
-				</option>
-			</select>
-		</div>
+        <option
+          v-for="option in cityOptions"
+          :key="option.cityName"
+          :value="{
+            centerlat: option.centerLat,
+            centerlng: option.centerLng,
+            cityName: option.cityName,
+          }"
+          :continentvalue="option.cityName"
+        >
+          {{ option.cityName }}
+        </option>
+      </select>
+    </div>
 
-		<div id="map"></div>
-	</div>
+    <div id="map"></div>
+  </div>
 </template>
 
 <script>
@@ -70,6 +70,7 @@ export default {
 			markers: [],
 			msg: '서비스를 준비중입니다.',
 			isAvailservice: true,
+			beforeCoutry: '',
 			selected: '선택',
 		};
 	},
@@ -78,7 +79,6 @@ export default {
 			.get('select/continent')
 			.then(({ data }) => {
 				this.continentOptions = data;
-				console.log(this.continentOptions);
 			})
 			.catch((err) => {
 				console.dir(err);
@@ -115,7 +115,6 @@ export default {
 			marker.addListener('click', () => {
 				this.SET_SPECIFIC_SPOT(value);
 				this.$router.push('/map');
-				console.log(value);
 			});
 			this.markers.push(marker);
 		},
@@ -128,19 +127,14 @@ export default {
 		},
 
 		checkalreadyVisit(country) {
-			console.log('선택된 도시');
-			console.log(country);
-
 			this.CHANGE_TOUR_LIST(country);
 			if (this.GET_ISDUPLICATECITY == true) {
-				this.$route.push('/route');
+				this.$router.push('/route');
 			}
 		},
 		selectContinent(event) {
 			//데이터 변경될 때,
 			let continent = event.target.value;
-			console.log(continent);
-			console.log(event.target.value);
 			http
 				.get('select/country/' + continent)
 				.then(({ data }) => {
@@ -154,9 +148,18 @@ export default {
 		selectCountry(event) {
 			//데이터 변경될 때,
 			let country = event.target.value;
-			this.checkalreadyVisit(country);
-			console.log(country);
-			console.log(event);
+			if(this.beforeCoutry.length == 0){
+				this.beforeCoutry = country;
+			}else{
+				console.log(this.beforeCoutry);
+				console.log("이전값 기록")
+				let data = {
+					beforeCnt : this.beforeCoutry,
+					curCnt : country,
+				}
+				this.checkalreadyVisit(data);
+			}
+			this.beforeCoutry = country;
 			http
 				.get('select/city/' + country)
 				.then(({ data }) => {
@@ -204,7 +207,7 @@ export default {
 
 <style>
 #map {
-	width: 50vw;
-	height: 50vh;
+  width: 50vw;
+  height: 50vh;
 }
 </style>
