@@ -114,7 +114,7 @@ export default {
 			});
 			marker.addListener('click', () => {
 				this.SET_SPECIFIC_SPOT(value);
-				this.$router.push('/map');
+				this.$router.push('/map/spotdetail');
 			});
 			this.markers.push(marker);
 		},

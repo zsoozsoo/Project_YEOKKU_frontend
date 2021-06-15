@@ -29,7 +29,7 @@ const routes = [
 		component: () => import('../views/OptimalMap.vue'),
 		children: [
 			{
-				path: '/',
+				path: 'spotdetail',
 				name: 'TourSpotDetail',
 				component: () => import('../components/optimalmap/TourSpotDetail.vue'),
 			},
@@ -50,7 +50,7 @@ const routes = [
 			},
 		],
 		redirect: () => {
-			return '/map/';
+			return '/map/route';
 		},
 	},
 ];
