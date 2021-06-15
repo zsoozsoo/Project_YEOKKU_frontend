@@ -1,11 +1,16 @@
-import Vue from "vue";
-import Vuex from "vuex";
+import Vue from 'vue';
+import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-  state: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+import mapStore from '@/store/modules/mapStore.js';
+import optimalRouteStore from '@/store/modules/optimalRouteStore.js';
+
+const store = new Vuex.Store({
+	modules: {
+		mapStore: mapStore,
+		optimalRouteStore: optimalRouteStore,
+	},
 });
+
+export default store;
