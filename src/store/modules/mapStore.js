@@ -49,7 +49,6 @@ const mapStore = {
 			//조건에 다 만족하는 경우 데이터 추가
 			if (state.isAvailableStoreinRouteList == true) {
 				state.specificRoute.push(data);
-				console.log('데이터 추가되는지 ㅎ ㅘㄱ인');
 				console.log(state.specificRoute);
 			}
 		},

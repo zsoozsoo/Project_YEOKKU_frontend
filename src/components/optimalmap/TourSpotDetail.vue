@@ -28,6 +28,7 @@ export default {
 	},
 	methods: {
 		...mapMutations('mapStore', ['SET_ADD_SPOT_IN_ROUTE']),
+
 		mvRouteList: function () {
 			console.log(this.SPECIFIC_SPOT_DETAIL.pointName);
 			let data = {
