@@ -11,6 +11,7 @@
 		</div>
 		<div>
 			<button v-on:click="mvRouteList">경로추가</button>
+			<button v-on:click="mvList">경로리스트이동</button>
 		</div>
 	</div>
 </template>
@@ -36,6 +37,7 @@ export default {
 				lng: this.SPECIFIC_SPOT_DETAIL.lng,
 				pointId: this.SPECIFIC_SPOT_DETAIL.pointId,
 				pointName: this.SPECIFIC_SPOT_DETAIL.pointName,
+				address: this.SPECIFIC_SPOT_DETAIL.address,
 			};
 			this.SET_ADD_SPOT_IN_ROUTE(data);
 			if (this.GET_ISAVAILABLE_SPOT === true) {
@@ -51,6 +53,9 @@ export default {
 			// 	console.log('경로가 추가됨?');
 			// 	this.$router.push('/route');
 			// }
+		},
+		mvList: function () {
+			this.$router.push('/map/route');
 		},
 	},
 };

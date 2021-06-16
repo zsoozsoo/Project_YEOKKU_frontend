@@ -7,6 +7,7 @@ const mapStore = {
 		specificRoute: [],
 		isAvailableStoreinRouteList: true,
 		isDuplicateCity: false,
+		curCountry: '',
 	},
 	actions: {},
 	getters: {
@@ -23,6 +24,9 @@ const mapStore = {
 		},
 		GET_ISDUPLICATECITY(state) {
 			return state.isDuplicateCity;
+		},
+		GET_CURCOUNTRY(state) {
+			return state.curCountry;
 		},
 	},
 	mutations: {
@@ -54,6 +58,7 @@ const mapStore = {
 		},
 		CHANGE_TOUR_LIST(state, payload) {
 			console.log(payload);
+
 			//이전 도시에 경로들 routeList 우선 추가
 			if (state.specificRoute.length > 0) {
 				let data = {
@@ -87,6 +92,9 @@ const mapStore = {
 		},
 		DELETE_A_TOUR(state, idx) {
 			state.specificRoute.splice(idx, 1);
+		},
+		SET_CUR_COUNTRY(state, country) {
+			state.curCountry = country;
 		},
 	},
 };
