@@ -4,6 +4,7 @@
 			<router-link to="/">Home</router-link> |
 			<router-link to="/about">About</router-link> |
 			<router-link to="/map">Map</router-link>
+			<button type="button" class="btn btn-primary">Primary</button>
 		</div>
 		<router-view />
 	</div>
