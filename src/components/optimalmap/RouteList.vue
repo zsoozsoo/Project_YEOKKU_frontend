@@ -1,34 +1,32 @@
 <template lang="">
 	<div>
 		<legend class="mt-4">현재까지 선택한 관광지 리스트</legend>
-		<div class="d-flex">
-			<fieldset class="form-group row justify-content-between">
-				<div class="form-check col">
-					<label for="walking" class="form-check-label" >
-						<input type="radio" id="walking" value="walking" v-model="ckMode" class="form-check-input"/>
-						도보
-					</label>
-				</div>
-				<div class="form-check col">
-					<label for="transit" class="form-check-label">
-						<input type="radio" id="transit" value="transit" v-model="ckMode" class="form-check-input"/>
-						대중교통
-					</label>
-				</div>
-				<div class="form-check col">
-					<label for="transit" class="form-check-label">
-						<input type="radio" id="bicycling" value="bicycling" v-model="ckMode" class="form-check-input"/>
-						자전거
-					</label>
-				</div>
-				<div class="form-check col">
-					<label for="transit" class="form-check-label">
-						<input type="radio" id="driving" value="driving" v-model="ckMode" class="form-check-input"/>
-						자동차
-					</label>
-				</div>
-			</fieldset>
-		</div>
+		<fieldset class="form-group row justify-content-between">
+			<div class="form-check col">
+				<label for="walking" class="form-check-label" >
+					<input type="radio" id="walking" value="walking" v-model="ckMode" class="form-check-input"/>
+					도보
+				</label>
+			</div>
+			<div class="form-check col">
+				<label for="transit" class="form-check-label">
+					<input type="radio" id="transit" value="transit" v-model="ckMode" class="form-check-input"/>
+					대중교통
+				</label>
+			</div>
+			<div class="form-check col">
+				<label for="transit" class="form-check-label">
+					<input type="radio" id="bicycling" value="bicycling" v-model="ckMode" class="form-check-input"/>
+					자전거
+				</label>
+			</div>
+			<div class="form-check col">
+				<label for="transit" class="form-check-label">
+					<input type="radio" id="driving" value="driving" v-model="ckMode" class="form-check-input"/>
+					자동차
+				</label>
+			</div>
+		</fieldset>
 		<p>대중교통 이용불가할 경우, 자동차를 이용한 경로로 검색됩니다.</p>
 
 		<div>
