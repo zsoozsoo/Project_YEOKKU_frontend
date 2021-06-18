@@ -1,56 +1,70 @@
 <template>
 	<div>
-		<div id="selectArea">
-			<select
-				name="continent"
-				id="continent"
-				ref="continent"
-				@change="selectContinent($event)"
-			>
-				<option>선택</option>
-				<option v-for="option in continentOptions" :key="option.continentName">
-					{{ option.continentName }}
-				</option>
-			</select>
-			<select
-				name="country"
-				id="country"
-				ref="country"
-				@change="selectCountry($event)"
-			>
-				<option
-					v-for="option in countryOptions"
-					:key="option.countryCode"
-					:continentvalue="option"
+		<label for="exampleSelect1" class="form-label mt-4">어디로 갈까요?</label>
+		<div class="form-group row mx-auto" id="selectArea">
+			<!-- 대륙 -->
+			<div class="col-4">
+				<select
+					name="continent"
+					id="continent"
+					ref="continent"
+					@change="selectContinent($event)"
+					class="form-select"
 				>
-					{{ option.countryName }}
-				</option>
-			</select>
-			<select
-				name="city"
-				id="city"
-				ref="city"
-				v-model="selected"
-				@change="selectCity()"
-			>
-				<option value="0">선택</option>
-
-				<option
-					v-for="option in cityOptions"
-					:key="option.cityName"
-					:value="{
-						centerlat: option.centerLat,
-						centerlng: option.centerLng,
-						cityName: option.cityName,
-					}"
-					:continentvalue="option.cityName"
+					<option disabled value="">Select Continent</option>
+					<option v-for="option in continentOptions" :key="option.continentName">
+						{{ option.continentName }}
+					</option>
+				</select>
+			</div>
+			<!-- 나라 -->
+			<div class="col-4">
+				<select
+					name="country"
+					id="country"
+					ref="country"
+					@change="selectCountry($event)"
+					class="form-select"
 				>
-					{{ option.cityName }}
-				</option>
-			</select>
+					<option disabled value="">Select Country</option>
+					<option
+						v-for="option in countryOptions"
+						:key="option.countryCode"
+						:continentvalue="option"
+					>
+						{{ option.countryName }}
+					</option>
+				</select>
+			</div>
+			<!-- 도시 -->
+			<div class="col-4">
+				<select
+					name="city"
+					id="city"
+					ref="city"
+					v-model="selected"
+					@change="selectCity()"
+					class="form-select"
+				>
+					<option disabled value="">Select City</option>
+					<!-- <option value="0">선택</option> -->
+					<option
+						v-for="option in cityOptions"
+						:key="option.cityName"
+						:value="{
+							centerlat: option.centerLat,
+							centerlng: option.centerLng,
+							cityName: option.cityName,
+						}"
+						:continentvalue="option.cityName"
+					>
+						{{ option.cityName }}
+					</option>
+				</select>
+			</div>
 		</div>
 
-		<div id="map"></div>
+		<div id="map" class="mx-auto"></div>
 	</div>
 </template>
 

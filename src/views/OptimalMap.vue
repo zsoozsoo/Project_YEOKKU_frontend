@@ -1,12 +1,16 @@
 <template>
-	<div id="detail">
-		<Map name="map"></Map>
-		<div>
-			<router-link to="/map/spotdetail"></router-link>
-			<router-link to="/map/pathdetail"></router-link>
-			<router-link to="/map/optlist"></router-link>
-			<router-link to="/map/route"></router-link>
-			<router-view></router-view>
+	<div id="detail" class="d-flex">
+		<div class="row mx-auto">
+			<div class="col mx-auto row">
+				<Map name="map" class="col-7"></Map>
+				<div class="col-5 mx-auto">
+					<router-link to="/map/spotdetail"></router-link>
+					<router-link to="/map/pathdetail"></router-link>
+					<router-link to="/map/optlist"></router-link>
+					<router-link to="/map/route"></router-link>
+					<router-view></router-view>
+				</div>
+			</div>
 		</div>
 	</div>
 </template>
