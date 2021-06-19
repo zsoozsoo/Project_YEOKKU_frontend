@@ -11,7 +11,7 @@
 					@change="selectContinent($event)"
 					class="form-select"
 				>
-					<option disabled value="">Select Continent</option>
+					<option>Select Continent</option>
 					<option v-for="option in continentOptions" :key="option.continentName">
 						{{ option.continentName }}
 					</option>
@@ -26,7 +26,7 @@
 					@change="selectCountry($event)"
 					class="form-select"
 				>
-					<option disabled value="">Select Country</option>
+					<option v-if="countryOptions[0]">Select Country</option>
 					<option
 						v-for="option in countryOptions"
 						:key="option.countryCode"
@@ -46,7 +46,7 @@
 					@change="selectCity()"
 					class="form-select"
 				>
-					<option disabled value="">Select City</option>
+					<option v-if="cityOptions[0]">Select City</option>
 					<!-- <option value="0">선택</option> -->
 					<option
 						v-for="option in cityOptions"
@@ -64,7 +64,7 @@
 			</div>
 		</div>
 
-		<div id="map" class="mx-auto"></div>
+		<div id="map" class="mx-auto my-3"></div>
 	</div>
 </template>
 
@@ -85,7 +85,7 @@ export default {
 			msg: '서비스를 준비중입니다.',
 			isAvailservice: true,
 			beforeCoutry: '',
-			selected: '선택',
+			selected: 'Select City',
 			optMarkers: [],
 			optLines: [],
 			lat: '',
@@ -299,7 +299,57 @@ export default {
 
 <style>
 #map {
-	width: 50vw;
+	width: 47vw;
 	height: 50vh;
+	border-radius: 0.55rem;
+}
+
+.form-select {
+  display: block;
+  width: 100%;
+  padding: 0.375rem 2.25rem 0.375rem 0.75rem;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: #212529;
+  background-color: #fff;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23333' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 16px 12px;
+  border: 2px solid #333;
+  border-radius: 55px 225px 15px 25px/25px 25px 35px 355px !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+.form-select:focus {
+  border-color: #333;
+  outline: 0;
+  box-shadow: 0 0 0 0.25rem rgba(51, 51, 51, 0.25);
+}
+.form-select[multiple],
+.form-select[size]:not([size="1"]) {
+  padding-right: 0.75rem;
+  background-image: none;
+}
+.form-select:disabled {
+  background-color: #f7f7f9;
+}
+.form-select:-moz-focusring {
+  color: transparent;
+  text-shadow: 0 0 0 #212529;
+}
+.form-select-sm {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.5rem;
+  font-size: 0.875rem;
+}
+.form-select-lg {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  font-size: 1.25rem;
 }
 </style>
