@@ -53,6 +53,18 @@ const routes = [
 			return '/map/route';
 		},
 	},
+	{
+		path: '/movie',
+		name: 'Movie',
+		component: () => import('../views/Movie.vue'),
+		children: [
+			{
+				path: 'moviedetail',
+				name: 'movieDetail',
+				component: () => import('../components/culture/MovieDetail.vue'),
+			},
+		]
+	}
 ];
 
 const router = new VueRouter({
