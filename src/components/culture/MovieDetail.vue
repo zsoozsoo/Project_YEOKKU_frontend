@@ -16,17 +16,23 @@
           v-if="this.GET_DETAIL_MOVIE.imageUrl != null"
           :src="this.GET_DETAIL_MOVIE.imageUrl"
           class="d-block user-select-none"
-          width="100%"
+          width="50%"
           title="이미지"
-          style="font-size: 1.125rem; text-anchor: middle; user-select: auto"
+          style=" display: block;
+margin-left: auto;
+margin-right: auto; font-size: 1.125rem; text-anchor: middle; user-select: auto"
         />
         <img
           v-if="this.GET_DETAIL_MOVIE.imageUrl == null"
           src="https://via.placeholder.com/150"
           class="d-block user-select-none"
-          width="100%"
+          width="50%"
+          height="50%"
+          align="center"
           title="기본이미지"
-          style="font-size: 1.125rem; text-anchor: middle; user-select: auto"
+          style="          display: block;
+margin-left: auto;
+margin-right: auto; font-size: 1.125rem; text-anchor: middle; user-select: auto"
         />
         <div class="card-body" style="user-select: auto">
           <p class="card-text" style="user-select: auto">
