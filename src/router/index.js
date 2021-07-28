@@ -64,6 +64,18 @@ const routes = [
 				component: () => import('../components/culture/MovieDetail.vue'),
 			},
 		]
+	},
+	{
+		path: '/book',
+		name: 'Book',
+		component: () => import('../views/Book.vue'),
+		children: [
+			{
+				path: 'bookdetail',
+				name: 'bookDetail',
+				component: () => import('../components/culture/BookDetail.vue'),
+			},
+		]
 	}
 ];
 
