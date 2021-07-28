@@ -1,8 +1,12 @@
 <template>
-  <div id="detail">
-    <MovieList name="movie"></MovieList>
+  <div id="detail" class="my-5 py-5">
+    <div class="row justify-content-center">
+    <MovieList name="movie" class="col-6 mx-5 diary"></MovieList>
+    <div class="diary col-4 mx-4">
     <router-link to="/movie/movieDetail"></router-link>
     <router-view></router-view>
+    </div>
+    </div>
   </div>
 </template>
 <script>
@@ -16,8 +20,8 @@ export default {
 </script>
 
 <style>
-#detail {
+/* #detail {
   width: 100vw;
   height: 100vh;
-}
+} */
 </style>

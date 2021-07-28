@@ -1,40 +1,81 @@
 <template>
   <div>
-    <div id="movieDetail">
-      <div>
+    <div id="movieDetail" v-if="Object.keys(this.GET_DETAIL_MOVIE).length > 0">
+      <div class="card mb-3" style="user-select: auto" >
+        <h3 class="card-header" style="user-select: auto">영화 정보</h3>
+        <div class="card-body" style="user-select: auto">
+          <h5 class="card-title" style="user-select: auto">
+            {{ this.GET_DETAIL_MOVIE.movieTitle }}
+            <span class="badge rounded-pill bg-light" style="user-select: auto;">{{ this.GET_DETAIL_MOVIE.rating }}</span>
+          </h5>
+          <h6 class="card-subtitle text-muted" style="user-select: auto">
+            {{ this.GET_DETAIL_MOVIE.genre }}
+          </h6>
+        </div>
         <img
           v-if="this.GET_DETAIL_MOVIE.imageUrl != null"
           :src="this.GET_DETAIL_MOVIE.imageUrl"
+          class="d-block user-select-none"
+          width="100%"
           title="이미지"
+          style="font-size: 1.125rem; text-anchor: middle; user-select: auto"
         />
         <img
           v-if="this.GET_DETAIL_MOVIE.imageUrl == null"
           src="https://via.placeholder.com/150"
+          class="d-block user-select-none"
+          width="100%"
           title="기본이미지"
+          style="font-size: 1.125rem; text-anchor: middle; user-select: auto"
         />
-        <br />
-        제목: {{ this.GET_DETAIL_MOVIE.movieTitle }}<br />
-        개봉년도: {{ this.GET_DETAIL_MOVIE.prodYear }}<br />
-        장르: {{ this.GET_DETAIL_MOVIE.genre }}<br />
-        러닝타임: {{ this.GET_DETAIL_MOVIE.runtime }}분 <br />
-        등급: {{ this.GET_DETAIL_MOVIE.rating }}<br />
-        감독:{{ this.GET_DETAIL_MOVIE.director }}<br />
+        <div class="card-body" style="user-select: auto">
+          <p class="card-text" style="user-select: auto">
+            {{ this.GET_DETAIL_MOVIE.plot }}
+          </p>
+        </div>
+        <table>
+          <tbody style="user-select: auto">
+            <tr style="user-select: auto">
+               <td style="user-select: auto">개봉년도</td>
+              <td scope="col" style="user-select: auto"> {{ this.GET_DETAIL_MOVIE.prodYear }}년</td>
+            </tr>
+                        <tr style="user-select: auto">
+               <td style="user-select: auto">러닝타임</td>
+              <td scope="col" style="user-select: auto">{{ this.GET_DETAIL_MOVIE.runtime }}분 </td>
+            </tr>
+          </tbody>
+        </table>
 
-        출연배우:
-        <ul>
-          <li
+              <div class="card" style="user-select: auto">
+        <div class="card-body" style="user-select: auto">
+          <h4 class="card-title" style="user-select: auto">출연 / 제작</h4>
+          <h6 class="card-subtitle mb-2 text-muted" style="user-select: auto">
+            {{ this.GET_DETAIL_MOVIE.director }}
+          </h6>
+          <span
+            class="card-text"
+            style="user-select: auto"
             v-for="actor in this.GET_DETAIL_MOVIE.actors"
             :key="actor.actorId"
           >
             {{ actor }}
-          </li>
-        </ul>
-        줄거리 : {{ this.GET_DETAIL_MOVIE.plot }}<br />
-        영화정보 링크 :
-        <a :href="this.GET_DETAIL_MOVIE.infoUrl" target="blank">{{
-          this.GET_DETAIL_MOVIE.infoUrl
-        }}</a>
+          </span>
+        </div>
       </div>
+        <div class="card-body" style="user-select: auto">
+          <a
+            :href="this.GET_DETAIL_MOVIE.infoUrl"
+            target="blank"
+            class="card-link"
+            style="user-select: auto"
+          >
+            관련 link
+          </a>
+        </div>
+        <!-- <div class="card-footer text-muted" style="user-select: auto">2 days ago</div> -->
+      </div>
+
+
     </div>
   </div>
 </template>

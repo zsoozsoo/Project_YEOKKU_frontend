@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">YEOKKU</a>
+        <router-link to="/cover" class="navbar-brand">YEOKKU </router-link>
         <button
           class="navbar-toggler"
           type="button"
@@ -32,6 +32,7 @@
             <li class="nav-item">
               <router-link to="/about" class="nav-link">About</router-link>
             </li>
+
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -53,6 +54,7 @@
                     >Movie</router-link
                   ></a
                 >
+
                 <a class="dropdown-item" href="#">Something else here</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Separated link</a>
@@ -60,14 +62,10 @@
             </li>
           </ul>
           <form class="d-flex">
-            <input
-              class="form-control me-sm-2"
-              type="text"
-              placeholder="Search"
-            />
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">
-              Search
-            </button>
+
+            <input class="form-control me-sm-2" type="text" placeholder="Search" />
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+
           </form>
         </div>
       </div>
