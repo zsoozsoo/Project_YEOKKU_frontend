@@ -54,6 +54,11 @@
                     >Movie</router-link
                   ></a
                 >
+                <a class="dropdown-item" href="#"
+                  ><router-link to="/music" class="nav-link"
+                    >Music</router-link
+                  ></a
+                >
 
                 <a class="dropdown-item" href="#">Something else here</a>
                 <div class="dropdown-divider"></div>
@@ -62,10 +67,14 @@
             </li>
           </ul>
           <form class="d-flex">
-
-            <input class="form-control me-sm-2" type="text" placeholder="Search" />
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-
+            <input
+              class="form-control me-sm-2"
+              type="text"
+              placeholder="Search"
+            />
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">
+              Search
+            </button>
           </form>
         </div>
       </div>

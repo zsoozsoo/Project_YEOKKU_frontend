@@ -1,5 +1,7 @@
 import axios from 'axios';
 const SERVER_URL = process.env.VUE_APP_SERVER_URL;
+// process.env.VUE_APP_SERVER_URL;
+//'http://localhost:8080/';
 
 // axios 객체 생성
 export default axios.create({

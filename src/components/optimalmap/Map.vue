@@ -12,7 +12,10 @@
           class="form-select"
         >
           <option>Select Continent</option>
-          <option v-for="option in continentOptions" :key="option.continentName">
+          <option
+            v-for="option in continentOptions"
+            :key="option.continentName"
+          >
             {{ option.continentName }}
           </option>
         </select>
@@ -97,6 +100,7 @@ export default {
       .get("select/continent")
       .then(({ data }) => {
         this.continentOptions = data;
+        console.log("ㅇㅕ기");
       })
       .catch((err) => {
         console.dir(err);
@@ -116,7 +120,10 @@ export default {
       console.log("route변경 이거 맞았으면 좋겠다");
       console.log(this.lat);
       console.log(this.lng);
-      let moveLatLng = new window.google.maps.LatLng(parseFloat(this.lat), parseFloat(this.lng));
+      let moveLatLng = new window.google.maps.LatLng(
+        parseFloat(this.lat),
+        parseFloat(this.lng)
+      );
       this.map.panTo(moveLatLng);
       console.log(to.name);
       if (to.name == "PathDetail") {
@@ -143,7 +150,11 @@ export default {
     },
   },
   methods: {
-    ...mapMutations("mapStore", ["SET_SPECIFIC_SPOT", "CHANGE_TOUR_LIST", "SET_CUR_COUNTRY"]),
+    ...mapMutations("mapStore", [
+      "SET_SPECIFIC_SPOT",
+      "CHANGE_TOUR_LIST",
+      "SET_CUR_COUNTRY",
+    ]),
 
     makePolyline(data) {
       console.log("polydata");
@@ -171,7 +182,10 @@ export default {
 
     setAllmarker(data) {
       data.forEach((value) => {
-        this.setMarker2({ lat: parseFloat(value.lat), lng: parseFloat(value.lng) }, value);
+        this.setMarker2(
+          { lat: parseFloat(value.lat), lng: parseFloat(value.lng) },
+          value
+        );
       });
     },
 
@@ -218,6 +232,7 @@ export default {
     selectContinent(event) {
       //데이터 변경될 때,
       let continent = event.target.value;
+      console.log(continent);
 
       http
         .get("select/country/" + continent)
