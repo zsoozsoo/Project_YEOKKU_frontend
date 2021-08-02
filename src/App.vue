@@ -32,9 +32,7 @@
             <li class="nav-item">
               <router-link to="/about" class="nav-link">About</router-link>
             </li>
-            <li class="nav-item">
-              <router-link to="/movie" class="nav-link">Movie</router-link>
-            </li>
+
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -46,8 +44,22 @@
                 >Dropdown</a
               >
               <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#"
+                  ><router-link to="/book" class="nav-link"
+                    >Book</router-link
+                  ></a
+                >
+                <a class="dropdown-item" href="#"
+                  ><router-link to="/movie" class="nav-link"
+                    >Movie</router-link
+                  ></a
+                >
+                <a class="dropdown-item" href="#"
+                  ><router-link to="/music" class="nav-link"
+                    >Music</router-link
+                  ></a
+                >
+
                 <a class="dropdown-item" href="#">Something else here</a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#">Separated link</a>
@@ -55,8 +67,14 @@
             </li>
           </ul>
           <form class="d-flex">
-            <input class="form-control me-sm-2" type="text" placeholder="Search" />
-            <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+            <input
+              class="form-control me-sm-2"
+              type="text"
+              placeholder="Search"
+            />
+            <button class="btn btn-secondary my-2 my-sm-0" type="submit">
+              Search
+            </button>
           </form>
         </div>
       </div>

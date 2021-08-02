@@ -73,6 +73,30 @@ const routes = [
 				component: () => import('../components/culture/MovieDetail.vue'),
 			},
 		]
+	},
+	{
+		path: '/book',
+		name: 'Book',
+		component: () => import('../views/Book.vue'),
+		children: [
+			{
+				path: 'bookdetail',
+				name: 'bookDetail',
+				component: () => import('../components/culture/BookDetail.vue'),
+			},
+		]
+	},
+	{
+		path: '/music',
+		name: 'Music',
+		component: () => import('../views/Music.vue'),
+		children: [
+			{
+				path: 'musicdetail',
+				name: 'musicDetail',
+				component: () => import('../components/culture/MusicDetail.vue'),
+			},
+		]
 	}
 ];
 

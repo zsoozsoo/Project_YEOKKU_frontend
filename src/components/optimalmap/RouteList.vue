@@ -57,69 +57,69 @@
 	</div>
 </template>
 <script>
-import { mapGetters, mapMutations } from 'vuex';
-import lodash from 'lodash';
-import http from '@/util/http-common.js';
-import Draggable from 'vuedraggable';
+import { mapGetters, mapMutations } from "vuex";
+import lodash from "lodash";
+import http from "@/util/http-common.js";
+import Draggable from "vuedraggable";
 
 export default {
-	name: 'RouteList',
-	components: {
-		Draggable,
-	},
-	data() {
-		return {
-			ckMode: 'driving',
-			ckWay: 'oneway',
-		};
-	},
-	computed: {
-		...mapGetters('mapStore', ['GET_CURRENT_ROUTE', 'GET_CURCOUNTRY']),
-	},
-	methods: {
-		...mapMutations('mapStore', ['DELETE_A_TOUR']),
-		...mapMutations('optimalRouteStore', ['SET_OPTIMAL_LIST']),
+  name: "RouteList",
+  components: {
+    Draggable,
+  },
+  data() {
+    return {
+      ckMode: "driving",
+      ckWay: "oneway",
+    };
+  },
+  computed: {
+    ...mapGetters("mapStore", ["GET_CURRENT_ROUTE", "GET_CURCOUNTRY"]),
+  },
+  methods: {
+    ...mapMutations("mapStore", ["DELETE_A_TOUR"]),
+    ...mapMutations("optimalRouteStore", ["SET_OPTIMAL_LIST"]),
 
-		removeAt(idx) {
-			this.DELETE_A_TOUR(idx);
-		},
+    removeAt(idx) {
+      this.DELETE_A_TOUR(idx);
+    },
 
-		mvOptimalMap: function () {
-			if (this.GET_CURRENT_ROUTE.length < 3) {
-				alert('최소 3개 이상 관광지를 추가해주세요!');
-			} else {
-				let temp = lodash.cloneDeep(this.GET_CURRENT_ROUTE);
-				let start = temp[0];
-				let end = '';
-				temp.shift();
-				// if (this.ckWay == 'oneway') {
-				// 	end = temp[temp.length - 1];
-				// 	temp.pop();
-				// } else {
-				end = start;
-				// }
+    mvOptimalMap: function () {
+      if (this.GET_CURRENT_ROUTE.length < 3) {
+        alert("최소 3개 이상 관광지를 추가해주세요!");
+      } else {
+        let temp = lodash.cloneDeep(this.GET_CURRENT_ROUTE);
+        let start = temp[0];
+        let end = "";
+        temp.shift();
+        // if (this.ckWay == 'oneway') {
+        // 	end = temp[temp.length - 1];
+        // 	temp.pop();
+        // } else {
+        end = start;
+        // }
 
-				http
-					.post('/path/' + this.ckWay + '/' + this.ckMode, {
-						start: start,
-						end: end,
-						pointList: temp,
-						countryName: this.GET_CURCOUNTRY,
-					})
-					.then((res) => {
-						console.log('roundpath');
-						const data = {
-							way: this.ckWay,
-							mode: this.ckMode,
-							data: res.data,
-						};
-						console.log(data);
-						this.SET_OPTIMAL_LIST(data);
-						this.$router.push('/map/optlist');
-					});
-			}
-		},
-	},
+        http
+          .post("/path/" + this.ckWay + "/" + this.ckMode, {
+            start: start,
+            end: end,
+            pointList: temp,
+            countryName: this.GET_CURCOUNTRY,
+          })
+          .then((res) => {
+            console.log("roundpath");
+            const data = {
+              way: this.ckWay,
+              mode: this.ckMode,
+              data: res.data,
+            };
+            console.log(data);
+            this.SET_OPTIMAL_LIST(data);
+            this.$router.push("/map/optlist");
+          });
+      }
+    },
+  },
 };
 </script>
 <style lang=""></style>
