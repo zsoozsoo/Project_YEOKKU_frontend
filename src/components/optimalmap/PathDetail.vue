@@ -7,10 +7,14 @@
 				v-for="(data, index) in GET_OPTIMAL_DETAIL.data"
 				v-bind:key="`transitpath${index}`"
 			>
-				{{ data.startPoint.pointName }} ({{ data.startPoint.address }})
-				{{ data.endPoint.pointName }}-> ({{ data.startPoint.address }})
-				{{ data.totalDistance }}
-				{{ data.totalDuration }}
+<p>{{ data.startPoint.pointName }} ({{ data.startPoint.address }})</p>
+				<p> <b>↓</b>  </p>
+				<p>{{ data.endPoint.pointName }}({{ data.startPoint.address }})</p>
+				( <span> 거리 : {{ data.totalDistance }} </span>
+				<span> 시간 :{{ data.totalDuration }} </span>
+				)
+				<p></p>
+				
 				<div v-for="(route, index) in data.instuctionList" :key="index">
 					{{ route.instruction }}
 					{{ route.distance }}
@@ -23,14 +27,17 @@
 				v-for="(data, index) in GET_OPTIMAL_DETAIL.data"
 				v-bind:key="`path${index}`"
 			>
-				{{ data.startPoint.pointName }} ({{ data.startPoint.address }})
-				{{ data.endPoint.pointName }}-> ({{ data.startPoint.address }})
-				{{ data.totalDistance }}
-				{{ data.totalDuration }}
+				<p>{{ data.startPoint.pointName }} ({{ data.startPoint.address }})</p>
+				<p> <b>↓</b>  </p>
+				<p>{{ data.endPoint.pointName }}({{ data.startPoint.address }})</p>
+				( <span> 거리 : {{ data.totalDistance }} </span>
+				<span> 시간 :{{ data.totalDuration }} </span>
+				)
+				<p></p>
 			</div>
 		</div>
 		<div>
-			<button v-on:click="mvOptList">최적경로리스트이동</button>
+			<button v-on:click="mvOptList" type="button" class="btn btn-outline-primary" style="user-select: auto;">최적경로리스트이동</button>
 		</div>
 	</div>
 </template>

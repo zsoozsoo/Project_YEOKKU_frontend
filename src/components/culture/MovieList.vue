@@ -154,7 +154,7 @@ export default {
 <style>
 #movieList {
   width: 50vw;
-  height: 50vh;
+  /* height: 50vh; */
 }
 
 .form-select {

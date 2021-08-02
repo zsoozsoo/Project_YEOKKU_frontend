@@ -23,47 +23,21 @@
                 <span class="visually-hidden">(current)</span>
               </router-link>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <router-link to="/map" class="nav-link">Map</router-link>
-            </li>
-            <li class="nav-item">
-              <router-link to="/about" class="nav-link">About</router-link>
-            </li>
 
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                data-bs-toggle="dropdown"
-                href="#"
-                role="button"
-                aria-haspopup="true"
-                aria-expanded="false"
-                >Dropdown</a
-              >
-              <div class="dropdown-menu">
-                <a class="dropdown-item" href="#"
-                  ><router-link to="/book" class="nav-link"
+            <li class="nav-item">
+             <router-link to="/book" class="nav-link"
                     >Book</router-link
-                  ></a
-                >
-                <a class="dropdown-item" href="#"
-                  ><router-link to="/movie" class="nav-link"
+                  >
+            </li>
+            <li class="nav-item">
+              <router-link to="/movie" class="nav-link"
                     >Movie</router-link
-                  ></a
-                >
-                <a class="dropdown-item" href="#"
-                  ><router-link to="/music" class="nav-link"
+                  >
+            </li>
+            <li class="nav-item">
+            <router-link to="/music" class="nav-link"
                     >Music</router-link
-                  ></a
-                >
-
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-              </div>
+                  >
             </li>
           </ul>
           <form class="d-flex">

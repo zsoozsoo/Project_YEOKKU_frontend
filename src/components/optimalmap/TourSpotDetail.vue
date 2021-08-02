@@ -10,8 +10,8 @@
 			<p>{{ SPECIFIC_SPOT_DETAIL.desc }}</p>
 		</div>
 		<div>
-			<button v-on:click="mvRouteList">경로추가</button>
-			<button v-on:click="mvList">경로리스트이동</button>
+			<button v-on:click="mvRouteList" type="button" class="btn btn-outline-primary" style="user-select: auto;">경로추가</button>
+			<button v-on:click="mvList" type="button" class="btn btn-outline-primary" style="user-select: auto;">경로리스트이동</button>
 		</div>
 	</div>
 </template>

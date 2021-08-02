@@ -1,29 +1,69 @@
 <template>
   <div>
-    <div id="bookDetail">
-      <div>
+    <div id="bookDetail" >
+      <div class="card mb-3" style="user-select: auto" >
+        <h3 class="card-header" style="user-select: auto">책 정보</h3>
+        <div class="card-body" style="user-select: auto">
+          <h5 class="card-title" style="user-select: auto">
+            {{ this.GET_DETAIL_BOOK.titleInfo }}
+             <span class="badge rounded-pill bg-light" style="user-select: auto;">isbn : {{ this.GET_DETAIL_BOOK.isbn }}</span>
+          </h5>
+          <h6 class="card-subtitle text-muted" style="user-select: auto">
+            {{ this.GET_DETAIL_BOOK.authorInfo }}
+          </h6>
+        </div>
         <img
-          v-if="this.GET_DETAIL_BOOK.image_path != null"
-          :src="this.GET_DETAIL_BOOK.image_path"
+          v-if="this.GET_DETAIL_BOOK.imageUrl != null"
+          :src="this.GET_DETAIL_BOOK.imageUrl"
+          class="d-block user-select-none"
+          width="50%"
           title="이미지"
+          style=" display: block;
+margin-left: auto;
+margin-right: auto; font-size: 1.125rem; text-anchor: middle; user-select: auto"
         />
         <img
-          v-if="this.GET_DETAIL_BOOK.image_path == null"
+          v-if="this.GET_DETAIL_BOOK.imageUrl == null"
           src="https://via.placeholder.com/150"
+          class="d-block user-select-none"
+          width="50%"
+          height="50%"
+          align="center"
           title="기본이미지"
+          style="          display: block;
+margin-left: auto;
+margin-right: auto; font-size: 1.125rem; text-anchor: middle; user-select: auto"
         />
+        <div class="card-body" style="user-select: auto">
+
+        </div>
+        <table >
+          <tbody style="user-select: auto">
+            <tr style="user-select: auto">
+               <td class="ml-3" style="user-select: auto">출판사</td>
+              <td class="mr-3" style="user-select: auto"> {{ this.GET_DETAIL_BOOK.pubInfo }}</td>
+            </tr>
+            <tr style="user-select: auto">
+               <td  class="ml-3" style="user-select: auto">출판일</td>
+              <td  class="ml-3" style="user-select: auto">{{ this.GET_DETAIL_BOOK.expDate }} </td>
+            </tr>
+             <tr style="user-select: auto">
+               <td class="ml-3" style="user-select: auto">가격</td>
+              <td style="user-select: auto">{{ this.GET_DETAIL_BOOK.price }}원 </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+      <!-- <div>
         <br />
-        제목: {{ this.GET_DETAIL_BOOK.titleInfo }}<br />
-        {{ this.GET_DETAIL_BOOK.authorInfo }}<br />
-        출판사: {{ this.GET_DETAIL_BOOK.pubInfo }}<br />
-        출판일: {{ this.GET_DETAIL_BOOK.expDate }} <br />
-        소개: {{ this.GET_DETAIL_BOOK.datail_path }}<br />
         가격: {{ this.GET_DETAIL_BOOK.price }} ({{
           this.GET_DETAIL_BOOK.currency_code
         }})<br />
         isbn : {{ this.GET_DETAIL_BOOK.isbn }}
-      </div>
-    </div>
+      </div> -->
+
+  </div>
   </div>
 </template>
 

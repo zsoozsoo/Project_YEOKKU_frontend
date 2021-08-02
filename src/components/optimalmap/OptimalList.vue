@@ -1,25 +1,29 @@
 <template>
 	<div>
 		<div v-cloak></div>
+		<p></p>
 		<div
 			v-for="(data, index) in GET_OPTIMAL_LIST.data"
 			v-bind:key="`round${index}`"
 			@click="detailOptimal(data)"
 		>
-			{{ GET_OPTIMAL_LIST.way | setWay() }}
+		<p></p>
+			<h2>{{ GET_OPTIMAL_LIST.way | setWay() }}
 
-			{{ data.pathCriteria | setType() }}
-
-			<p v-for="(path, index) in data.pointsInOrder" v-bind:key="`p${index}`">
+			{{ data.pathCriteria | setType() }}</h2>
+	
+			<li v-for="(path, index) in data.pointsInOrder" v-bind:key="`p${index}`">
 				{{ path.pointName }}
-			</p>
+			</li>
+			<p></p>
 			{{ data.totalDistance }}
 			{{ data.totalDuration }}
 			{{ data.travelMode | setMode() }}
 		</div>
-		<div>
-			<button v-on:click="mvList">경로리스트이동</button>
+		<div class="mt-3">
+			<button v-on:click="mvList" type="button" class="btn btn-outline-primary" style="user-select: auto;">경로리스트이동</button>
 		</div>
+		<p></p>
 	</div>
 </template>
 

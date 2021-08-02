@@ -27,33 +27,35 @@
 				</label>
 			</div>
 		</fieldset>
-		<p>대중교통 이용불가할 경우, 자동차를 이용한 경로로 검색됩니다.</p>
+		<i>대중교통 이용불가할 경우, 자동차를 이용한 경로로 검색됩니다.</i>
 
 		<div>
+      <p></p>
 			<input type="radio" id="oneway" value="oneway" v-model="ckWay" />
 			<label for="oneway">편도</label>
 			<input type="radio" id="round" value="round" v-model="ckWay" />
 			<label for="round">순환</label>
+      <p></p>
 		</div>
 		<!-- 시작점, 도착점 선택 -->
 		<div>
-			<i v-if="ckWay == 'round'">시작점 및 도착점</i>
-			<i v-if="ckWay == 'oneway'">시작점</i>
+			<p v-if="ckWay == 'round'">시작점 및 도착점</p>
+			<p v-if="ckWay == 'oneway'">시작점</p>
+      <p></p> 
 
 			<draggable tag="ul" :list="GET_CURRENT_ROUTE">
-				<li
+				<p
 					v-for="(data, index) in GET_CURRENT_ROUTE"
 					v-bind:key="data.pointId"
 				>
-					<i>목록이미지</i>
-					<span>{{ data.pointName }}</span>
-					<i @click="removeAt(index)">삭제이미지</i>
-				</li>
+					<span>{{ data.pointName }} </span>
+          <button @click="removeAt(index)" type="button" class="btn-close" data-bs-dismiss="alert" style="user-select: auto; width:1vx;"></button>
+				</p>
 			</draggable>
 			<!-- <i v-if="GET_CURRENT_ROUTE.length > 1 && ckWay == 'oneway'">도착점</i> -->
 		</div>
+<button v-on:click="mvOptimalMap" type="button" class="btn btn-outline-primary" style="user-select: auto;">최적 경로 찾기</button>
 
-		<button v-on:click="mvOptimalMap">최적 경로 찾기</button>
 	</div>
 </template>
 <script>
