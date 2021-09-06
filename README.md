@@ -28,7 +28,7 @@
 <br>
 
 ### 문서
- - [StoryBoard](스토리보드.zip)
+ - [StoryBoard](스토리보드(여꾸).zip)
  - [ERD](https://www.erdcloud.com/d/Hn45vGf4aEmGLyYaM)
  - [관련 PPT](YEOKKU_PPT.pptx)
 
